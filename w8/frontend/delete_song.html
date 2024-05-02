@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Song</title>
+</head>
+<body>
+  <h4>Enter the song id to delete</h4>
+  <form method="post" onsubmit="onSubmit(event)">
+    <input type="text" name="song_id" id="song_id"  placeholder="Song id provided by the mongodb" required />
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    async function onSubmit(event) {
+      event.preventDefault();
+      const song_id = document.getElementById('song_id').value;
+      console.log(song_id)
+      await fetch(`http://localhost:3000/delete_song/${song_id}`, {
+        method: "delete",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json" 
+        }
+      }).then(async res => {
+        const result = await res.json();
+        alert(result)
+      }).catch(err => {
+        console.log(err);
+        alert("Error occured")
+      })
+    }
+  </script>
+</body>
+</html>

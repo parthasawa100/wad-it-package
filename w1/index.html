@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./jquery_mobile/jquery.mobile-1.4.5.css" />
+  <style>
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+    .logo_container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      height: 100%;
+    }
+    .pict_logo {
+      width: 100px;
+      height: 100px;
+    }
+    .header_text {
+      text-align: center;
+    }
+    .hero_section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80vh;
+      flex-direction: column;
+    }
+    .card {
+      padding: 100px;
+      margin: -30px;
+      min-height: 30vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo_container " >
+      <img class="pict_logo" src="https://pict.edu/images/pic.jpg" />
+    </div>
+    <div class="header_text">
+      <h5>
+        Society for Computer Technology and Research's
+      </h5>
+      <h3>
+        PUNE INSTITUTE OF COMPUTER TECHNOLOGY
+      </h3>
+      <h5>
+        (An Autonomous Institute affiliated to Savitribai Phule Pune University)
+      </h5>
+      <h5>
+        AICTE APPROVED | ISO 9001:2015 | NAAC A+ Grade | NBA [All Eligible UG Programs]
+      </h5>
+    </div>
+  </div>
+
+  <div data-role="navbar">
+    <ul>
+      <li><a class="ui-btn-active" href="#">Home</a></li>
+      <li><a class="ui-btn"  href="#">About Us</a></li>
+      <li><a class="ui-btn"  href="#">Admissions</a></li>
+      <li><a class="ui-btn"  href="#">Departments</a></li>
+      <li><a class="ui-btn"  href="#">Placements</a></li>
+    </ul>
+  </div>
+
+  <div class="hero_section">
+    <h1>Achievements</h1>
+    <div class="ui-grid-c">
+      <div class="ui-block-a card ui-shadow">
+        <h5>
+          ABU Robocon: secured AIR 4 in 2014 (pune) & AIR 11 in 2017(Tokyo)
+        </h5>
+      </div>
+      <div class="ui-block-b card ui-shadow">
+        <h5>
+          PICT team won 1 lakh prize in smart india hackathon 2020
+        </h5>
+      </div>
+      <div class="ui-block-c card ui-shadow">
+        <h5>
+          PICT has secured platinum rating in AICTE - CCI survey of industry-linked technical institutes
+        </h5>
+      </div>
+      <div class="ui-block-d card ui-shadow">
+        <h5>
+          PICT has secured platinum rating in AICTE - CCI survey of industry-linked technical institutes
+        </h5>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="./jquery_mobile/jquery.mobile-1.4.5.js" ></script>
+</body>
+</html>

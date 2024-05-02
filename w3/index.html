@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      min-height: 70vh;
+      min-width: 40vw;
+      padding: 30px;
+      border-radius: 30px;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    .form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      font-size: 18px;
+    }
+    input, select {
+      margin-bottom: 20px;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form class="form" method="post" onsubmit="onSubmit(event)">
+      <label>Name</label>
+      <input type="text" id="name" required />
+
+      <label>Roll No</label>
+      <input type="text" id="roll_no" required />
+
+      <label>Date of birth</label>
+      <input type="date" id="dob" max="2010-12-01"  required />
+      
+
+      <label>Elective choice 1</label>
+      <select name="choice1" id="choice1" required>
+        <option value="Cloud computing">Cloud computing</option>
+        <option value="Mobile computing">Mobile computing</option>
+      </select>
+
+      <label>Elective choice 2</label>
+      <select name="choice2" id="choice2" required>
+        <option value="Cloud computing">Cloud computing</option>
+        <option value="Mobile computing">Mobile computing</option>
+      </select>
+
+      <label>Gender</label>
+      <div style="display: flex; flex-direction: row;">
+        <div style="display: flex; flex-direction: row;">
+          <input type="radio" name="gender" id="male_radio" value="Male" required /> Male
+        </div>
+        <div style="display: flex; flex-direction: row;">
+          <input type="radio" name="gender" id="female_radio" value="Female" required /> Female
+        </div>
+      </div>
+
+      <button type="submit">Submit</button>
+
+    </form>
+
+    <script>
+      async function onSubmit(event) {
+        event.preventDefault();
+        
+        const name = document.getElementById("name").value;
+        const roll_no = document.getElementById("roll_no").value;
+        const dob = document.getElementById("dob").value;
+        const choice1 = document.getElementById('choice1').value;
+        const choice2 = document.getElementById('choice2').value;
+        const gender = document.getElementById('male_radio').checked ? "Male" : "Female";
+        const data = {name, roll_no, dob, choice1, choice2, gender};
+        
+        const localDB = localStorage.getItem("registration_table");
+
+        const arr = !!localDB ? JSON.parse(localDB) : [];
+        
+        arr.push(data);
+
+        localStorage.setItem("registration_table", JSON.stringify(arr));
+        window.location.replace("/data.html");
+      }
+    </script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WAD 6</title>
+  <style>
+    table, tr, td, th {
+      border: 1px solid black;
+    }
+    table {
+      margin: 20px;
+    }
+    td {
+      padding: 10px;
+      padding-right: 30px;
+      padding-left: 30px;
+    }
+  </style>
+</head>
+<body>
+  <form method="post" onsubmit="submitForm(event)">
+    <input type="text" id="input1" name="input1" required  value="3#3#3"/>
+    <input type="text" id="input2" name="input2" required value="3#3#2" />
+    <button type="submit">Create table</button>
+  </form>
+
+  <table id="table1"></table>
+  <table id="table2"></table>
+  <table id="table3"></table>
+
+  <script>
+
+    const table1 = document.getElementById('table1')
+    const table2 = document.getElementById('table2')
+    const table3 = document.getElementById('table3')
+
+    const submitForm = (event) => {
+      event.preventDefault();
+      const input1 = document.getElementById('input1').value
+      const input2 = document.getElementById('input2').value
+      
+      var i1 = input1.split('#').map(Number);
+      var i2 = input2.split('#').map(Number);
+      console.log(i1)
+      
+      displayTable(table1, i1);
+      displayTable(table2, i2);
+
+      displayFinalTable(i1, i2);
+    }
+    var mp = new Map();
+    function check(val) {
+      if(!mp.has(val)) {
+        var random_color = Math.floor(Math.random() * 256);
+        mp[val] = random_color;
+      }
+      return `rgb(${mp[val]}, ${mp[val] * .5 }, 0)`;
+    }
+
+    function displayFinalTable(arr1, arr2) {
+      const r=Math.min(arr1[0], arr2[0]);
+      const c=Math.min(arr1[1], arr2[1]);
+
+      var i, j;
+      var html = "";
+      for(i=1; i<=r; i++) {
+        var t="<tr>";
+        for(j=0; j<c; j++) {
+          const val1=i*(arr1[2]+j);
+          const val2=i*(arr2[2]+j);
+          const res= val1==val2 ? val1 :  val1*val2;
+          
+          t+=`<td style='background-color: `+  check(res) +` ' >${res}</td>`
+        }
+        t+='</tr>';
+        html+=t;
+      }
+      console.log(html)
+      table3.innerHTML = html;
+    }
+
+
+
+    function displayTable(table, arr) {
+      var i, j;
+      var html = "";
+      for(i=1; i<=arr[0]; i++) {
+        var t = `<tr>`;
+        for(j=0; j<arr[1]; j++) {
+          const val = i*(arr[2]+j);
+          t += `<td>${val}</td>`;
+        }
+        t += `</tr>`;
+        html += t;
+
+      }
+      table.innerHTML =  html
+    }
+  </script>
+</body>
+</html>

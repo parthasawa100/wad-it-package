@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form method="post" onsubmit="onSubmit(event)"  style="display: flex; flex-direction: column;">
+    <label>Enter the roll number</label>
+    <input type="text" name="roll_no" id="roll_no" />
+    <button type="submit">update marks</button>
+  </form>
+
+  <script>
+    async function onSubmit(event) {
+      event.preventDefault();
+
+      const roll_no = document.getElementById("roll_no").value;
+
+      await fetch("http://localhost:3000/updateMarks", {
+        method: "PATCH",
+        headers: {
+          "Content-Type" : "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({roll_no})
+      }).then(async res => {
+        const result = await res.json();
+        alert(result)
+      }).catch(err => {
+        console.log(err);
+        alert("Error occured");
+      })
+    }
+  </script>
+</body>
+</html>

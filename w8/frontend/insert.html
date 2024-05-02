@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form method="post" onsubmit="onSubmit(event)" style="display: flex; flex-direction: column;">
+    <lable>Song name</lable>
+    <input type="text" id="song_name" required />
+
+    <lable>Film</lable>
+    <input type="text" id="film" required />
+
+    <lable>Music Director</lable>
+    <input type="text" id="music_director" required />
+
+    <lable>Singer</lable>
+    <input type="text" id="singer" required />
+
+    <button type="submit">Insert record</button>
+  </form>
+
+  <script>
+    async function onSubmit(event) {
+      event.preventDefault();
+
+      const song_name = document.getElementById("song_name").value
+      const film = document.getElementById("film").value
+      const music_director = document.getElementById("music_director").value
+      const singer = document.getElementById("singer").value
+
+      const body = {
+        song_name: song_name,
+        film: film, 
+        music_director: music_director,
+        singer: singer
+      }
+
+      await fetch('http://localhost:3000/insert', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({song_body: body})
+      }).then(async res => {
+        const result = await res.json();
+        alert(result)
+      }).catch(err => {
+        console.log(err);
+        alert("Error occured")
+      })
+    }
+  </script>
+</body>
+</html>

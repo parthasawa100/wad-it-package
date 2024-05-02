@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    tr, td, th {
+      border: 1px solid black;
+    }
+    td, th {
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      
+      const container = document.getElementById("container");
+
+      let localDB = localStorage.getItem("registration_table");
+      localDB = !!localDB ? JSON.parse(localDB) : [];
+
+      let html = `<table> <tr> <th> Name </th> <th> Roll no </th> <th> DOB </th> <th> Gender </th> <th> Choice 1</th> <th> Choice 2</th> </tr> `;
+
+      for(const doc of localDB) {
+        html += ` <tr> <td>${doc.name}</td> <td>${doc.roll_no}</td> <td>${doc.dob}</td> <td>${doc.gender}</td> <td>${doc.choice1}</td> <td>${doc.choice2}</td> </tr> `;
+      }
+
+      html += `</table>`;
+
+      container.innerHTML = html
+      
+    })
+  </script>
+</body>
+</html>

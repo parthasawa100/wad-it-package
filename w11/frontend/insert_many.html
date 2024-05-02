@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form method="post" onsubmit="onSubmit(event)" style="display: flex; flex-direction: column;">
+    <label>ENter the array of student</label>
+
+    <textarea rows="20" name="docs" id="docs" style="margin: 30px"></textarea>
+    
+    <button type="submit">Submit</button>
+  </form>
+
+  <p>
+    [
+  {
+    "name": "Alice",
+    "roll_no": 101,
+    "wad_marks": 85,
+    "cc_marks": 75,
+    "dsbda_marks": 90,
+    "cns_marks": 80
+  },
+  {
+    "name": "Bob",
+    "roll_no": 102,
+    "wad_marks": 80,
+    "cc_marks": 70,
+    "dsbda_marks": 85,
+    "cns_marks": 75
+  },
+  {
+    "name": "Charlie",
+    "roll_no": 103,
+    "wad_marks": 90,
+    "cc_marks": 80,
+    "dsbda_marks": 95,
+    "cns_marks": 85
+  },
+  {
+    "name": "David",
+    "roll_no": 104,
+    "wad_marks": 75,
+    "cc_marks": 65,
+    "dsbda_marks": 80,
+    "cns_marks": 70
+  }
+]
+
+  </p>
+
+  <script>
+    async function onSubmit(event) {
+      event.preventDefault();
+
+      const docs = document.getElementById("docs").value;
+      console.log(docs)
+      await fetch("http://localhost:3000/addMarks", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({docs})
+      }).then(async res => {
+        const result = await res.json();
+        console.log(result);
+        alert(result)
+      }).catch(err => {
+        console.log(err);
+        alert("Error occured")
+      })
+    }
+  </script>
+</body>
+</html>
