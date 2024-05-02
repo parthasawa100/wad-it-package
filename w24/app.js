@@ -5,9 +5,7 @@ const path = require('path');
 
 const server  = http.createServer((req, res) => {
   const parsedUrl = url.parse(req.url);
-
   let filePath = path.join(__dirname, 'public', parsedUrl.pathname);
-
   if(filePath == path.join(__dirname, 'public', '/')) {
     filePath = path.join(__dirname, 'public', 'index.html');
   }
@@ -25,9 +23,6 @@ const server  = http.createServer((req, res) => {
       res.end('404 Not Found');
     }
   })
-
-
-
 })
 
 server.listen(3000, () => {

@@ -1,0 +1,19 @@
+{
+  "name": "hope-love",
+  "version": "1.1.0",
+  "description": "'Hope and Love'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parthasawa100/wad-it-package.git"
+  },
+  "author": "parth asawa <parthasawa100@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/parthasawa100/wad-it-package/issues"
+  },
+  "homepage": "https://github.com/parthasawa100/wad-it-package#readme"
+}
